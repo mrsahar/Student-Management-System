@@ -33,4 +33,16 @@
                 </tbody>
             </table>
         </div>
+        <br />
+    <a asp-controller="Student" asp-action="Add" class="btn btn-dark rounded-pill px-4 push-right">➕ Add New</a>
     </div>
+    <br/>
+@if (TempData["std_added"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["std_added"] has been added successfully!  
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+}
+<br/>

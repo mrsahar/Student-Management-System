@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Add Student";
+}
+
+<div class="container my-4">
+    <h2 class="mb-4">Add New Student</h2>
+    <form method="post" asp-action="Add" class="shadow p-4 rounded bg-light">
+        <div class="mb-3">
+            <label for="Name" class="form-label">Name</label>
+            <input type="text" name="Name" class="form-control" id="Name" placeholder="Enter full name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email</label>
+            <input type="email" name="Email" class="form-control" id="Email" placeholder="Enter email address" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="Age" class="form-label">Age</label>
+            <input type="number" name="Age" class="form-control" id="Age" placeholder="Enter age" min="1" required>
+        </div>
+
+        <button type="submit" class="btn btn-success rounded-pill px-4">Save</button>
+    </form>
+</div>
+
