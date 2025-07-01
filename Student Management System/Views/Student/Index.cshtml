@@ -1,0 +1,36 @@
+﻿@model List<Student_Management_System.Models.Entity.Student>
+@{
+    ViewData["Title"] = "Students";
+}
+
+
+     <div class="container my-4">
+    <h1>All Students</h1>
+        <div class="table-responsive">
+        <table class="table table-bordered table-light align-middle shadow-sm rounded">
+            <thead class="bg-white text-dark border-bottom">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var student in Model)
+                {
+                    <tr>
+                        <td>@student.Name</td>
+                        <td>@student.Email</td>
+                        <td>@student.Age</td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-warning me-1">Edit</a>
+                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
