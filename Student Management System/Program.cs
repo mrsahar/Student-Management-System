@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
 
 builder.Services.AddDbContext<SMSDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SMSCS")));
 
@@ -20,6 +21,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseSession();
 
 app.UseRouting();
 

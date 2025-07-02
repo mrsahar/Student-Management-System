@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Login";
+}
+@model Student_Management_System.Models.SessionName
+
+<div class="container my-5">
+    <form asp-action="EnterName" asp-controller="Student" method="post" class="mx-auto p-4 shadow rounded bg-white" style="max-width: 500px;">
+        <div class="mb-3 d-flex align-items-center"> 
+            <input asp-for="Name" placeholder="Enter your name" required /> 
+            <button asp-action="EnterName" asp-controller="Student" type="submit" class="btn btn-primary fw-bold">🔐 Login</button>
+        </div>
+    </form>
+</div>
+@if (ViewBag.isLogin != null){
+<div class="container my-5">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert"> 
+        @ViewBag.isLogin Your Are logout.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+</div>
+  }
+
+
+
+
