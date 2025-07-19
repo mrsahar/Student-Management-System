@@ -1,4 +1,4 @@
-﻿@model List<Student_Management_System.Models.Entity.Student>
+﻿@model Student_Management_System.Models.StudentsPageWithAds
 @{
     ViewData["Title"] = "Students";
 }
@@ -25,15 +25,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var student in Model)
+                    @foreach (var student in Model.Student)
                 {
                     <tr>
                         <td>@student.Name</td>
                         <td>@student.Email</td>
                         <td>@student.Age</td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-warning me-1">Edit</a>
-                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                            <a asp-action="Edit" class="btn btn-sm btn-warning me-1" asp-route-id="@student.Id">Edit</a>
+                            <a asp-action="Delete" class="btn btn-sm btn-danger" asp-route-id="@student.Id">Delete</a>
                         </td>
                     </tr>
                 }
@@ -45,10 +45,10 @@
     <a asp-controller="Student" asp-action="Add" class="btn btn-dark rounded-pill px-4 push-right">➕ Add New</a>
     </div>
     <br/>
-@if (TempData["std_added"] != null)
+@if (TempData["ms"] != null)
 {
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @TempData["std_added"] has been added successfully!  
+        @TempData["ms"]
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
@@ -56,7 +56,10 @@
 <br/>
 <div class="container my-4">
     <div class="row row-cols-1 row-cols-md-3 g-4">
-<partial name="_ShowAds" />
+        @foreach (var ads in Model.FoodAds)
+        {
+            <partial name="_ShowAds" model="ads" />
+        } 
 </div>
 </div>
 <br />

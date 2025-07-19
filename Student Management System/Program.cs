@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Student_Management_System.Areas.Identity.Data;
 using Student_Management_System.database;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 
 builder.Services.AddDbContext<SMSDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SMSCS")));
+
+builder.Services.AddDefaultIdentity<SystemUser>(options =>
+    options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<SMSDbContext>();
+
+
 
 var app = builder.Build();
 
@@ -22,7 +29,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseSession();
-
+app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();
